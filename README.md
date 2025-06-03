@@ -56,7 +56,7 @@ For our **univariate analysis**, we looked into the distribution of the rating c
   frameborder="0"
 ></iframe>
 
-For our **bivariate analysis**, we looked
+For our **bivariate analysis**, we looked at average rating among recipes with different protein content. We "binned" the protein (% daily value column) into 5 bins, [0-50%], [50-100%], [100-150%], [150-200%] and [200-250%] and averaged the rating of recipes within those bins. As you can see, there is no visible disparity, but we'll have to continue digging deeper on the issue.
 <iframe
   src="assets/bivariate.html"
   width="800"
