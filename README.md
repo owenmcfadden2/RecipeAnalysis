@@ -21,8 +21,8 @@ To begin, here is a brief introduction of the datasets we’re working with, “
 
 * Interactions has 731927 rows and 5 columns:
   * ‘user_id’ - ID of user who reviewed recipe
-‘recipe_id’ - ID of recipe being reviewed
-‘date’ - Date review was submitted
-‘rating’ - Rating of recipe
-‘review’ - Review of recipe
+  * ‘recipe_id’ - ID of recipe being reviewed
+  * ‘date’ - Date review was submitted
+  * ‘rating’ - Rating of recipe
+  * ‘review’ - Review of recipe
 
