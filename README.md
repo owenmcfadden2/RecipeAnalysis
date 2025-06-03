@@ -6,8 +6,8 @@ For our project, we wanted to dive into how protein content relates to the ratin
 
 To begin, here is a brief introduction of the datasets we’re working with, “RAW_recipes.csv” and “interactions.csv”
 RAW_recipes has 83782 rows each of which represents a recipe, and 12 columns:
-*‘name’ -  Name of recipe
-*‘id’ - ID of recipe
-*‘minutes’ - Minutes to prepare recipe
+* ‘name’ -  Name of recipe
+* ‘id’ - ID of recipe
+* ‘minutes’ - Minutes to prepare recipe
 
 
