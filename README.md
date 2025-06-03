@@ -69,5 +69,13 @@ For our **bivariate analysis**, we looked at average rating among recipes with d
 </div>
 
 ### Interesting Aggregate
+For our **pivot table** we wanted to see how protein content (protein_bin) is related to not only rating, but also minutes, n_ingredients, and n_steps. To do this we created a pivot table indexed by protein_bin and showing the averages of minutes, n_ingredients, n_steps and rating within those protein bins.
+| protein_bin   |   minutes |   n_ingredients |   n_steps |   rating |
+|:--------------|----------:|----------------:|----------:|---------:|
+| 0–50%         |  106.525  |         8.60376 |   9.46058 |  4.68554 |
+| 50–100%       |   91.4503 |        10.5683  |  11.4433  |  4.66648 |
+| 100–150%      |  143.887  |        10.5773  |  12.7276  |  4.64887 |
+| 150–200%      |  203.723  |        10.0575  |  12.491   |  4.6134  |
+| 200–250%      |  256.662  |         8.22914 |  14.0014  |  4.64763 |
 
 ## Assessment of Missingness
