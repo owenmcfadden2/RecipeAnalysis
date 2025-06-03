@@ -38,7 +38,7 @@ Our next step was to merge the two datasets and then clean the merged dataframe
 3. We added a new column labeled ‘protein (% daily value)’ which dissects the ‘nutrition’ column and is the recipes protein content in the percentage of daily value (out of 50 grams)  
 4. Many of these protein (% daily values) made no sense (some being as low as 0% and others as high as 3000%), so we only kept rows whose protein content was less than 250% (a generous high estimate, as some recipes could have a ton of protein)
 5. Lastly, we added a column called 'protein_bin' which is bins of possible protein contents as follows: [0-50%], [50-100%], [100-150%], [150-200%] and [200-250%] 
-After merging, cleaning and adding columns, our final dataset has 233779 rows and 19 columns, and the first 5 rows are shown below for reference:
+After merging, cleaning and adding columns, our final dataset has 233779 rows and 19 columns, and the first 5 rows are shown below for reference:  
 
 | name                                 |     id |   minutes |   contributor_id | submitted   | tags                                | nutrition                              |   n_steps | steps                                     | description                            | ingredients                          |   n_ingredients |   user_id |   recipe_id | date       |   rating | review                                |   protein (% daily value) | protein_bin |
 |:-------------------------------------|-------:|----------:|-----------------:|:------------|:-------------------------------------|:----------------------------------------|----------:|:------------------------------------------|:----------------------------------------|:-------------------------------------|----------------:|----------:|------------:|:-----------|---------:|:----------------------------------------|--------------------------:|:------------|
@@ -69,7 +69,7 @@ For our **bivariate analysis**, we looked at average rating among recipes with d
 </div>
 
 ### Aggregate Analysis
-For our **pivot table** we wanted to see how protein content (protein_bin) is related to not only rating, but also minutes, n_ingredients, and n_steps. To do this we created a pivot table indexed by protein_bin and showing the averages of minutes, n_ingredients, n_steps and rating within those protein bins.
+For our **pivot table** we wanted to see how protein content (protein_bin) is related to not only rating, but also minutes, n_ingredients, and n_steps. To do this we created a pivot table indexed by protein_bin and showing the averages of minutes, n_ingredients, n_steps and rating within those protein bins.  
 | protein_bin   |   minutes |   n_ingredients |   n_steps |   rating |
 |:--------------|----------:|----------------:|----------:|---------:|
 | 0–50%         |  106.525  |         8.60376 |   9.46058 |  4.68554 |
@@ -82,8 +82,8 @@ For our **pivot table** we wanted to see how protein content (protein_bin) is re
 AAAA
 
 ## Hypothesis Testing
-**Null Hypothesis**: Foods with high protein are rated the same as foods without high protein
-**Alternate Hypothesis**: Foods with higher protein are rated higher
+**Null Hypothesis**: Foods with high protein are rated the same as foods without high protein  
+**Alternate Hypothesis**: Foods with higher protein are rated higher  
 For our test statistic, we chose to use AAA and we chose a significance level of α = 0.05
 
 ## Framing a Prediction Problem
