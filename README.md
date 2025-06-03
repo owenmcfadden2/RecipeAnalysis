@@ -48,3 +48,10 @@ After merging and cleaning, our final dataset has 233779 rows and 18 columns, an
 | 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ['60-minutes-or-less', ...]          | [194.8, 20.0, 6.0, 32.0, 22.0, 36.0, 3.0] |         6 | ['preheat oven to 350 degrees'...]       | since there are already 411...          | ['frozen broccoli cuts', ...]         |               9 |    768828 |      306168 | 2013-08-02 |        5 | Loved this...                          |                        22 |
 
 ### Univariate and Bivariate Analysis
+For our univariate analysis, we looked into the distribution of the rating column. Below, you’ll see ...
+<iframe
+  src="assets/univariate.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
