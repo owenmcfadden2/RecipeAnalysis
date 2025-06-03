@@ -9,5 +9,20 @@ To begin, here is a brief introduction of the datasets we’re working with, “
   * ‘name’ -  Name of recipe
   * ‘id’ - ID of recipe
   * ‘minutes’ - Minutes to prepare recipe
+  * ‘contributor_id’ - ID of user who submitted the recipe
+  * ‘submitted’ - Date recipe was submitted
+  * ‘tags’ - 
+  * ‘nutrition’ - Nutritional information of recipe
+  * ‘n_steps’ - Number of steps to prepare recipe
+  * ‘steps’ - Steps to prepare recipe
+  * ‘description’ - Description of recipe
+  * ‘ingredients’ - Ingredients needed to prepare the recipe
+  * ‘n_ingredients’ - Number of ingredients
 
+* Interactions has 731927 rows and 5 columns:
+  * ‘user_id’ - ID of user who reviewed recipe
+‘recipe_id’ - ID of recipe being reviewed
+‘date’ - Date review was submitted
+‘rating’ - Rating of recipe
+‘review’ - Review of recipe
 
