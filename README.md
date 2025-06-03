@@ -28,3 +28,6 @@ To begin, here is a brief introduction of the datasets we’re working with, “
 
 Looking at the two datasets, the two columns we are going to be most interested in are rating (an integer 1-5, 1 indicating worst and 5 indicating best), and nutrition, which contains nutritional information on the recipe in the following format:
 * [calories (#), total fat (% daily value), sugar (% daily value), sodium (% daily value), protein (% daily value), saturated fat (% daily value), carbohydrates (% daily value)]
+
+## Data Cleaning
+Our next step was to merge the two datasets and then clean the merged dataframe
