@@ -31,13 +31,14 @@ Looking at the two datasets, the two columns we are going to be most interested 
 
 ## Data Cleaning and Exploratory Data Analysis
 Our next step was to merge the two datasets and then clean the merged dataframe
-1. We performed an inner merge between the two dataframes on the id and recipe_id columns (since they represent the same value), and only keeps rows present in both original dataframes. Our final merged dataframe has 234429 rows (before cleaning) and 17 columns (all 17 described above)
+1. We performed an inner merge between the two dataframes on the id and recipe_id columns (since they represent the same value), and only keeps rows present in both original dataframes. Our final merged dataframe has 234428 rows (before cleaning) and 17 columns (all 17 described above)
 2. We noticed that there were some missing values to handle  
  a. There was one row which was both missing a name and recipe_id, so we dropped this row entirely  
  b. Many rows had a rating of 0.0, which doesn’t make sense on a standard 1-5 rating scale, so we replaced all instances with NaN values    
 3. We added a new column labeled ‘protein (% daily value)’ which dissects the ‘nutrition’ column and is the recipes protein content in the percentage of daily value (out of 50 grams)  
 4. Many of these protein (% daily values) made no sense (some being as low as 0% and others as high as 3000%), so we only kept rows whose protein content was less than 250% (a generous high estimate, as some recipes could have a ton of protein)
-After merging and cleaning, our final dataset has 233779 rows and 18 columns, and the first 5 rows are shown below for reference:
+5. Lastly, we added a column called 'protein_bin' which is bins of possible protein contents as follows: [0-50%], [50-100%], [100-150%], [150-200%] and [200-250%] 
+After merging, cleaning and adding columns, our final dataset has 233779 rows and 19 columns, and the first 5 rows are shown below for reference:
 
 | name                                 |     id |   minutes |   contributor_id | submitted   | tags                                | nutrition                              |   n_steps | steps                                     | description                            | ingredients                          |   n_ingredients |   user_id |   recipe_id | date       |   rating | review                                |   protein (% daily value) |
 |:-------------------------------------|-------:|----------:|-----------------:|:------------|:-------------------------------------|:----------------------------------------|----------:|:------------------------------------------|:----------------------------------------|:-------------------------------------|----------------:|----------:|------------:|:-----------|---------:|:----------------------------------------|--------------------------:|
@@ -58,7 +59,7 @@ For our **univariate analysis**, we looked into the distribution of the rating c
   ></iframe>
 </div>
 
-For our **bivariate analysis**, we looked at average rating among recipes with different protein content. We "binned" the protein (% daily value column) into 5 bins, [0-50%], [50-100%], [100-150%], [150-200%] and [200-250%] and averaged the rating of recipes within those bins. As you can see, there is no visible disparity, but we'll have to continue digging deeper on the issue.
+For our **bivariate analysis**, we looked at average rating among recipes with different protein content. We used the protein_bin column to bin the proteins and averaged the rating of recipes within those bins. As you can see, there is no visible disparity, but we'll have to continue digging deeper on the issue.
 <div style="margin-bottom: -175px;">
   <iframe
     src="assets/bivariate.html"
