@@ -49,12 +49,14 @@ After merging and cleaning, our final dataset has 233779 rows and 18 columns, an
 
 ### Univariate and Bivariate Analysis
 For our **univariate analysis**, we looked into the distribution of the rating column. Below, you’ll see a bar chart displaying the distribution of ratings, and is skewed heavily left, which indicates that most of the ratings in this dataset are on the higher side (as you can see by hovering, almost 170,000 of our 233,779 reviews gave a rating of 5/5)
-<iframe
-  src="assets/univariate.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+<div style="margin-bottom: -10px;">
+  <iframe
+    src="assets/univariate.html"
+    width="800"
+    height="600"
+    frameborder="0"
+  ></iframe>
+</div>
 
 For our **bivariate analysis**, we looked at average rating among recipes with different protein content. We "binned" the protein (% daily value column) into 5 bins, [0-50%], [50-100%], [100-150%], [150-200%] and [200-250%] and averaged the rating of recipes within those bins. As you can see, there is no visible disparity, but we'll have to continue digging deeper on the issue.
 <iframe
