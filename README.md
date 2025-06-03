@@ -49,7 +49,7 @@ After merging and cleaning, our final dataset has 233779 rows and 18 columns, an
 
 ### Univariate and Bivariate Analysis
 For our **univariate analysis**, we looked into the distribution of the rating column. Below, you’ll see a bar chart displaying the distribution of ratings, and is skewed heavily left, which indicates that most of the ratings in this dataset are on the higher side (as you can see by hovering, almost 170,000 of our 233,779 reviews gave a rating of 5/5)
-<div style="margin-bottom: -160px;">
+<div style="margin-bottom: -175px;">
   <iframe
     src="assets/univariate.html"
     width="800"
@@ -65,3 +65,5 @@ For our **bivariate analysis**, we looked at average rating among recipes with d
   height="600"
   frameborder="0"
 ></iframe>
+
+## Assessment of Missingness
