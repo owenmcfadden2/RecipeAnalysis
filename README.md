@@ -82,7 +82,9 @@ For our **pivot table** we wanted to see how protein content (protein_bin) is re
 AAAA
 
 ## Hypothesis Testing
-AAAA
+**Null Hypothesis**: Foods with high protein are rated the same as foods without high protein
+**Alternate Hypothesis**: Foods with higher protein are rated higher
+For our test statistic, we chose to use AAA and we chose a significance level of α = 0.05
 
 ## Framing a Prediction Problem
 AAAA
