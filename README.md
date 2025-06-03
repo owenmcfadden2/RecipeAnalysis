@@ -32,10 +32,8 @@ Looking at the two datasets, the two columns we are going to be most interested 
 ## Data Cleaning
 Our next step was to merge the two datasets and then clean the merged dataframe
 1. We performed an inner merge between the two dataframes on the id and recipe_id columns (since they represent the same value), and only keeps rows present in both original dataframes. Our final merged dataframe has 234429 rows and 17 columns (all 17 described above)
-2. We noticed that there were some missing values to handle
+2. We noticed that there were some missing values to handle  
  a. There was one row which was both missing a name and recipe_id, so we dropped this row entirely  
- b. Many rows had a rating of 0.0, which doesn’t make sense on a standard 1-5 rating scale, so we replaced all instances with NaN values  
- c. We added a new column labeled ‘protein (% daily value)’ which dissects the ‘nutrition’ column and is the recipes protein content in the percentage of daily value (out of 50 grams)  
- d. Many of these protein (% daily values) made no sense (some being as high as 3000%), so we only kept rows whose protein content was 250% (a generous high estimate, as some recipes could have a ton of protein)  
-3. A
-4. A
+ b. Many rows had a rating of 0.0, which doesn’t make sense on a standard 1-5 rating scale, so we replaced all instances with NaN values    
+3. We added a new column labeled ‘protein (% daily value)’ which dissects the ‘nutrition’ column and is the recipes protein content in the percentage of daily value (out of 50 grams)  
+4. Many of these protein (% daily values) made no sense (some being as high as 3000%), so we only kept rows whose protein content was 250% (a generous high estimate, as some recipes could have a ton of protein)
