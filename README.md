@@ -36,6 +36,6 @@ Our next step was to merge the two datasets and then clean the merged dataframe
  a. There was one row which was both missing a name and recipe_id, so we dropped this row entirely  
  b. Many rows had a rating of 0.0, which doesn’t make sense on a standard 1-5 rating scale, so we replaced all instances with NaN values  
  c. We added a new column labeled ‘protein (% daily value)’ which dissects the ‘nutrition’ column and is the recipes protein content in the percentage of daily value (out of 50 grams)  
- - d. Many of these protein (% daily values) made no sense (some being as high as 3000%), so we only kept rows whose protein content was 250% (a generous high estimate, as some recipes could have a ton of protein)  
+ d. Many of these protein (% daily values) made no sense (some being as high as 3000%), so we only kept rows whose protein content was 250% (a generous high estimate, as some recipes could have a ton of protein)  
 3. A
 4. A
