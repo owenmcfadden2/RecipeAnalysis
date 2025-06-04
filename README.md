@@ -79,7 +79,13 @@ For our **pivot table** we wanted to see how protein content (protein_bin) is re
 | 200–250%      |  256.662  |         8.22914 |  14.0014  |  4.64763 |
 
 ## Assessment of Missingness
-AAAA
+### NMAR Analysis
+As a reminder, for a column to be NMAR, it means that the chance that the value is missing depends on the actual missing value itself, not other columns. Looking at our data, one column that has a lot (57 rows) of missing entries is the review column (the other missing data can be seen in the table below). Description and name also had some missing data, but there is no explainable reason why description or name being missing would be dependent on the value itself. Review was a little more interesting to think about, as it could be NMAR in the sense that reviews could be skewed to only have the extreme reviews, the very positive and very negative reviews. This is because for someone to leave a review they had to have had a strong feeling towards the recipe (people who thought it was just okay probably wouldn't waste their time with a review).
+|             |   missing_count |
+|:------------|----------------:|
+| name        |               1 |
+| description |             114 |
+| review      |              57 |
 
 ## Hypothesis Testing
 **Null Hypothesis**: Foods with high protein are rated the same as foods without high protein  
