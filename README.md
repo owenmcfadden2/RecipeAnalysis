@@ -94,7 +94,7 @@ As a reminder, for a column to be NMAR, it means that the chance that the value 
 For our analysis of missingness, we wanted to see if the missingness of the description column was dependent on other columns, specifically rating and minutes. We did this by performing permutation tests, with a significance level of α = 0.05 and our test statistic was the absolute difference in means: average rating where description **is missing** - average rating where description **is not missing**
 
 #### Missingness Test #1 - Minutes
-Does **descriptions** missingness depend on **minutes**? **No** - our permutation test (100 shuffles)
+Does **descriptions** missingness depend on **minutes**? **No** - our permutation test (100 shuffles) yielded a p-value of 0.34, since this is greater than our α, we don't have any evidence to prove that the missingness of description depends on minutes. The plot below is a histogram of our simulated absolute difference in means, and the black line is the observed absolute difference in means (42.275).
 
 <div style="margin-bottom: -175px;">
   <iframe
@@ -106,7 +106,7 @@ Does **descriptions** missingness depend on **minutes**? **No** - our permutatio
 </div>
 
 #### Missingness Test #2 - Rating
-Does **descriptions** missingness depend on **rating**? **Yes** - our permutation test (100 shuffles) yielded a p-value of 0.04, since this is less than our α, it is extremely unlikely that this is due to chance alone. The plot below is a histogram of our simulated absolute difference in means, and the black line is our observed absolute difference in means.
+Does **descriptions** missingness depend on **rating**? **Yes** - our permutation test (100 shuffles) yielded a p-value of 0.04, since this is less than our α, it is extremely unlikely that this is due to chance alone. The plot below is a histogram of our simulated absolute difference in means, and the black line is the observed absolute difference in means (0.2307).
 
 <div style="margin-bottom: -175px;">
   <iframe
