@@ -110,7 +110,7 @@ Does **descriptions** missingness depend on **rating**? **Yes** -
 
 <div style="margin-bottom: -175px;">
   <iframe
-    src="assets/ratings_miss.html"
+    src="assets/rating_miss.html"
     width="800"
     height="600"
     frameborder="0"
