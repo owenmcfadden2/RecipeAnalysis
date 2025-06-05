@@ -124,12 +124,13 @@ As we originally said, we wanted to investigate whether higher protein content w
 **Test Statistic**: Mean rating of foods with high protein (>= 50% protein daily value)  
 **Significance Level**: α = 0.05
 We chose to run a permutation test since it doesn't make any assumptions about the distribution of ratings, and we're simply asking **How unusual is is our observed test statistic if protein has no effect on rating?**.  
-Running the permutation test:  
+
+### Running the permutation test:  
 **Step 1**: Find the observed test statistic: 4.662 (mean rating of foods with high protein)  
 **Step 2**: Randomly shuffle values 1000 times to disconnect any possible association between rating and protein content. For each of these shuffles we computed the mean of high protein recipes (randomly shuffled) and stored it as **simulated data**  
 **Step 3**: Compute our p-value given this distribution of simulated data under the null hypothesis  
 **Step 4**: Make our decision  
-Our computed p-value is **0.00** (essentially zero) and since this is less than our significance level **0.05**, we **reject the null hypothesis**, that foods with high protein are rated the same as foods without high protein.
+Our computed p-value is **0.00** (essentially zero) and since this is less than our significance level **0.05**, we **reject the null hypothesis**, that foods with high protein are rated the same as foods without high protein. As you can see in the histogram below, all of our simulated test statistics are greater than the observed test statistic (black line).  
 
 <div style="margin-bottom: -175px;">
   <iframe
