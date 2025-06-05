@@ -118,10 +118,10 @@ Does **descriptions** missingness depend on **rating**? **Yes** - our permutatio
 </div>
 
 ## Hypothesis Testing
-As we originally said, we wanted to investigate whether higher protein content would lead to a lower rating, and to do this we ran a permutation test
-**Null Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated the same as foods without high protein  
-**Alternate Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated lower than foods without high protein
-**Test Statistic**: 
+As we originally said, we wanted to investigate whether higher protein content would lead to a lower rating, and to do this we ran a permutation test  
+**Null Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated the same as foods without high protein    
+**Alternate Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated lower than foods without high protein  
+**Test Statistic**: Mean rating of foods with high protein (>= 50% protein daily value)  
 **Significance Level**: α = 0.05
 
 <div style="margin-bottom: -175px;">
