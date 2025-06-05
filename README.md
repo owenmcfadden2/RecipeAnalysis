@@ -2,7 +2,7 @@
 By: Owen McFadden and David Goldstein
 
 ## Introduction
-For our project, we wanted to dive into how protein content relates to the rating of different recipes. Protein is one of the most important parts of our diets, contributing to everything our body does, and yet a lot of the time is overlooked by many people. It’s beyond important for human development and maintenance that you get your recommended daily protein intake.
+For our project, we wanted to dive into how protein content relates to the rating of different recipes.
 
 To begin, here is a brief introduction of the datasets we’re working with, “RAW_recipes.csv” and “interactions.csv”
 * RAW_recipes has 83782 rows each of which represents a recipe, and 12 columns:
@@ -118,9 +118,20 @@ Does **descriptions** missingness depend on **rating**? **Yes** - our permutatio
 </div>
 
 ## Hypothesis Testing
-**Null Hypothesis**: Foods with high protein are rated the same as foods without high protein  
-**Alternate Hypothesis**: Foods with higher protein are rated higher  
-For our test statistic, we chose to use AAA and we chose a significance level of α = 0.05
+As we originally said, we wanted to investigate whether higher protein content would lead to a lower rating, and to do this we ran a permutation test
+**Null Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated the same as foods without high protein  
+**Alternate Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated lower than foods without high protein
+**Test Statistic**: 
+**Significance Level**: α = 0.05
+
+<div style="margin-bottom: -175px;">
+  <iframe
+    src="assets/protein_hist.html"
+    width="800"
+    height="600"
+    frameborder="0"
+  ></iframe>
+</div>
 
 ## Framing a Prediction Problem
 AAAA
