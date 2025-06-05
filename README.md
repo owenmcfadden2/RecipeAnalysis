@@ -2,7 +2,7 @@
 By: Owen McFadden and David Goldstein
 
 ## Introduction
-For our project, we wanted to dive into how protein content relates to the rating of different recipes.
+For our project, we wanted to dive into how protein content relates to the rating of different recipes. Protein is an absolutely essential part of our daily diet, helping to build and repair our muscles, supports immune function and is a key contributor in the production of enzymes and hormones. Many people don't consume enough protein, especially adults as they get older, and this could be due to the fact that **maybe high-protein recipes simply don't taste as good**. To investigate this, we'll work with two dataframes taken off of the internet.
 
 To begin, here is a brief introduction of the datasets we’re working with, “RAW_recipes.csv” and “interactions.csv”
 * RAW_recipes has 83782 rows each of which represents a recipe, and 12 columns:
@@ -118,11 +118,18 @@ Does **descriptions** missingness depend on **rating**? **Yes** - our permutatio
 </div>
 
 ## Hypothesis Testing
-As we originally said, we wanted to investigate whether higher protein content would lead to a lower rating, and to do this we ran a permutation test  
+As we originally said, we wanted to investigate whether higher protein content would lead to a lower rating, and to do this we ran a permutation test:  
 **Null Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated the same as foods without high protein    
 **Alternate Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated lower than foods without high protein  
 **Test Statistic**: Mean rating of foods with high protein (>= 50% protein daily value)  
 **Significance Level**: α = 0.05
+We chose to run a permutation test since it doesn't make any assumptions about the distribution of ratings, and we're simply asking **How unusual is is our observed test statistic if protein has no effect on rating?**.  
+Running the permutation test:  
+**Step 1**: Find the observed test statistic: 4.662 (mean rating of foods with high protein)  
+**Step 2**: Randomly shuffle values 1000 times to disconnect any possible association between rating and protein content. For each of these shuffles we computed the mean of high protein recipes (randomly shuffled) and stored it as **simulated data**  
+**Step 3**: Compute our p-value given this distribution of simulated data under the null hypothesis  
+**Step 4**: Make our decision  
+Our computed p-value is **0.00** (essentially zero) and since this is less than our significance level **0.05**, we **reject the null hypothesis**, that foods with high protein are rated the same as foods without high protein.
 
 <div style="margin-bottom: -175px;">
   <iframe
