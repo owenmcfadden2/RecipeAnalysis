@@ -46,7 +46,8 @@ After merging, cleaning and adding columns, our final dataset has 233779 rows an
 | 1 in canada chocolate chip cookies   | 453467 |        45 |          1848091 | 2011-04-11  | ['60-minutes-or-less', ...]          | [595.1, 46.0, 211.0, 22.0, 13.0, 51.0, 26.0] |        12 | ['pre-heat oven the 350 degrees...]      | this is the recipe that...              | ['white sugar', ...]                  |              11 |    424680 |      453467 | 2012-01-26 |        5 | Originally I was gonna...              |                        13 | 0-50%       |
 | 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ['60-minutes-or-less', ...]          | [194.8, 20.0, 6.0, 32.0, 22.0, 36.0, 3.0] |         6 | ['preheat oven to 350 degrees'...]       | since there are already 411...          | ['frozen broccoli cuts', ...]         |               9 |     29782 |      306168 | 2008-12-31 |        5 | This was one of the best broccoli...   |                        22 | 0-50%       |
 | 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ['60-minutes-or-less', ...]          | [194.8, 20.0, 6.0, 32.0, 22.0, 36.0, 3.0] |         6 | ['preheat oven to 350 degrees'...]       | since there are already 411...          | ['frozen broccoli cuts', ...]         |               9 | 1196280   |      306168 | 2009-04-13 |        5 | I made this for...                     |                        22 | 0-50%       |
-| 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ['60-minutes-or-less', ...]          | [194.8, 20.0, 6.0, 32.0, 22.0, 36.0, 3.0] |         6 | ['preheat oven to 350 degrees'...]       | since there are already 411...          | ['frozen broccoli cuts', ...]         |               9 |    768828 |      306168 | 2013-08-02 |        5 | Loved this...                          |                        22 | 0-50%       |
+| 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ['60-minutes-or-less', ...]          | [194.8, 20.0, 6.0, 32.0, 22.0, 36.0, 3.0] |         6 | ['preheat oven to 350 degrees'...]       | since there are already 411...          | ['frozen broccoli cuts', ...]         |               9 |    768828 |      306168 | 2013-08-02 |        5 | Loved this...                          |                        22 | 0-50%       |  
+
 ### Univariate and Bivariate Analysis
 For our **univariate analysis**, we looked into the distribution of the rating column. Below, you’ll see a bar chart displaying the distribution of ratings, and is skewed heavily left, which indicates that most of the ratings in this dataset are on the higher side (as you can see by hovering, almost 170,000 of our 233,779 reviews gave a rating of 5/5)
 <div style="margin-bottom: -175px;">
@@ -70,22 +71,24 @@ For our **bivariate analysis**, we looked at average rating among recipes with d
 
 ### Aggregate Analysis
 For our **pivot table** we wanted to see how protein content (protein_bin) is related to not only rating, but also minutes, n_ingredients, and n_steps. To do this we created a pivot table indexed by protein_bin and showing the averages of minutes, n_ingredients, n_steps and rating within those protein bins.  
+
 | protein_bin   |   minutes |   n_ingredients |   n_steps |   rating |
 |:--------------|----------:|----------------:|----------:|---------:|
 | 0–50%         |  106.525  |         8.60376 |   9.46058 |  4.68554 |
 | 50–100%       |   91.4503 |        10.5683  |  11.4433  |  4.66648 |
 | 100–150%      |  143.887  |        10.5773  |  12.7276  |  4.64887 |
 | 150–200%      |  203.723  |        10.0575  |  12.491   |  4.6134  |
-| 200–250%      |  256.662  |         8.22914 |  14.0014  |  4.64763 |
+| 200–250%      |  256.662  |         8.22914 |  14.0014  |  4.64763 |  
 
 ## Assessment of Missingness
 ### NMAR Analysis
 As a reminder, for a column to be NMAR, it means that the chance that the value is missing depends on the actual missing value itself, not other columns. Looking at our data, one column that has a lot (57 rows) of missing entries is the review column (the other missing data can be seen in the table below). Description and name also had some missing data, but there is no explainable reason why description or name being missing would be dependent on the value itself. Review was a little more interesting to think about, as it could be NMAR in the sense that reviews could be skewed to only have the extreme reviews, the very positive and very negative reviews. This is because for someone to leave a review they had to have had a strong feeling towards the recipe (people who thought it was just okay probably wouldn't waste their time with a review).
+
 |             |   missing_count |
 |:------------|----------------:|
 | name        |               1 |
 | description |             114 |
-| review      |              57 |
+| review      |              57 |  
 
 ### Missingness Dependency
 AAAA
@@ -107,8 +110,4 @@ AAAA
 ## Fairness Analysis
 AAAA
 
-| name                          | id     | rating | protein_bin |
-|------------------------------|--------|--------|--------------|
-| best brownies ever           | 333281 | 4      | 0-50%        |
-| chocolate chip cookies       | 453467 | 5      | 0-50%        |
-| broccoli casserole           | 306168 | 5      | 0-50%        |
+
