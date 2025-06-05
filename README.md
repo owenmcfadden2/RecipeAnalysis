@@ -91,7 +91,8 @@ As a reminder, for a column to be NMAR, it means that the chance that the value 
 | review      |              57 |  
 
 ### Missingness Dependency
-For our analysis of missingness, we wanted to see if the missingness of the description column was dependent on rating
+For our analysis of missingness, we wanted to see if the missingness of the description column was dependent on other columns, specifically rating and minutes. We did this by performing permutation tests.
+#### Missingness Test #1 - Minutes
 
 ## Hypothesis Testing
 **Null Hypothesis**: Foods with high protein are rated the same as foods without high protein  
