@@ -87,6 +87,9 @@ As a reminder, for a column to be NMAR, it means that the chance that the value 
 | description |             114 |
 | review      |              57 |
 
+### Missingness Dependency
+AAAA
+
 ## Hypothesis Testing
 **Null Hypothesis**: Foods with high protein are rated the same as foods without high protein  
 **Alternate Hypothesis**: Foods with higher protein are rated higher  
@@ -103,3 +106,9 @@ AAAA
 
 ## Fairness Analysis
 AAAA
+
+| name                          | id     | rating | protein_bin |
+|------------------------------|--------|--------|--------------|
+| best brownies ever           | 333281 | 4      | 0-50%        |
+| chocolate chip cookies       | 453467 | 5      | 0-50%        |
+| broccoli casserole           | 306168 | 5      | 0-50%        |
