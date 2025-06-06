@@ -142,7 +142,6 @@ Our computed p-value is **0.00** (essentially zero) and since this is less than 
 </div>
 
 ## Framing a Prediction Problem
-AAAA
 
 ## Baseline Model
 AAAA
