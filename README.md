@@ -142,9 +142,15 @@ Our computed p-value is **0.00** (essentially zero) and since this is less than 
 </div>
 
 ## Framing a Prediction Problem
+For our prediction problem, we are forming a **regression** problem to predict the rating (as a continuous float, not on a discrete 1-5 scale) of a recipe based on characteristics that are known before the review is submitted. Our response variable is **rating**, so that given all of the recipes features (like number of steps, number of ingredients, etc.) we could predict whether the recipe is "good" (rated highly). We're going to use RMSE to evaluate the accuracy of our model.
 
 ## Baseline Model
-AAAA
+For our **baseline model**, we used two features:  
+1. **has_description**: A column we added for this model specifically, indicating whether or not a recipe has a written description
+2. **n_ingredients**: Number of ingredients in the recipe
+
+We trained a linear regression model using **pipeline**, by **one-hot encoding** has_description and leaving n_ingredients as is.  
+**Model Performance**: 
 
 ## Final Model
 AAAA
