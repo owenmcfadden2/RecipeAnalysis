@@ -123,7 +123,7 @@ As we originally said, we wanted to investigate whether higher protein content w
 **Alternate Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated lower than foods without high protein  
 **Test Statistic**: Mean rating of foods with high protein (>= 50% protein daily value)  
 **Significance Level**: α = 0.05  
-We chose to run a permutation test since it doesn't make any assumptions about the distribution of ratings, and we're simply asking **How unusual is is our observed test statistic if protein has no effect on rating?** 
+We chose to run a hypothesis test since it doesn't make any assumptions about the distribution of ratings, and we're simply asking **How unusual is is our observed test statistic if protein has no effect on rating?** 
 
 ### Running the permutation test:  
 **Step 1**: Find the observed test statistic: 4.662 (mean rating of foods with high protein)  
@@ -154,12 +154,18 @@ Importantly for both our base and our final model, we sampled from our overall d
 
 We trained a random forest classification model using **pipeline** and default variables, by **one-hot encoding** has_description and leaving n_ingredients as is.  
 
-**Model Performance**: 
-Training RMSE: 1.471  
-Test RMSE: 1.485 
-Since our **RMSE** is fairly similar, it's clear we're not overfitting our data.  
+**Model Performance**:
+
+Training RMSE: 1.471
+
+Test RMSE: 1.485
+
+Since our **RMSE** is fairly similar, it's clear we're not overfitting our data. 
+
 Training R-squared: 0.723
+
 Test R-squared: 0.725
+
 Since our **R-squard** is fairly high, it seems we're not doing that bad of a job predicting data
 
 ## Final Model
@@ -181,20 +187,22 @@ We had to **transform** the data as follows:
 
 We continued to use **RandomForestClassifier** since rating isn't continuous. To select the best **hyperparameters**, we chose to use **GridSearchCV** to find the optimal max_depth and optimal number of trees. We searched over the range from 1 to 10, taking steps of 1, and the best depth was **7**. **GridSearchCV** also determined that the best number of trees to use is **100** out of a list of 100, 150, and 200.
 
-**Model Performance**: we are now going to use **R-squard** to evaluate the performance of our model  
+**Model Performance**: we are now going to use **R-squard** to evaluate the performance of our model
+
 Training R-square: 0.723
 Test R-squared: 0.731
+
 This is a **tiny improvement** over our baseline model...This is likely because of several factore: 1. **GridSearchCV** really didn't do all that much to optimize our hyperparameters. The default amount of trees is 100 and it found 100 to be the best number and the difference in depth of 7 and 3 is really quite small. Furthermore, it could be because our extra parameters really aren't that correlated with rating and we got lucky picking two good ones for the base model.
 
 ## Fairness Analysis
-* Group X: called group_a, this is the group of recipes that take at least 45 minutes
-* Group Y: called group_b, this is the group of recipes that take less than 45 minutes
-* evaluation metric: we dicided to use accuracy_score to see how good our model is at predicting rating
-* null hypothesis: when the model is broken up into groups X and Y seperately, the difference in accuracy is not unusual.
-* alternative hypothesis: there's an unusual difference in accuracy between the two groups X and Y
-* test statistic: absolute difference in accuracy
-* significance level: α = 0.05
-* p: 0.0
+* **Group X**: called group_a, this is the group of recipes that take at least 45 minutes
+* **Group Y**: called group_b, this is the group of recipes that take less than 45 minutes
+* **evaluation metric**: we dicided to use accuracy_score to see how good our model is at predicting rating
+* **null hypothesis**: when the model is broken up into groups X and Y seperately, the difference in accuracy is not unusual.
+* **alternative hypothesis**: there's an unusual difference in accuracy between the two groups X and Y
+* **test statistic**: absolute difference in accuracy
+* **ignificance level**: α = 0.05
+* **p**: 0.0
   
-Conclusion: We reject the Null, there is a difference in accuracy between the two groups and our model isn't exactly fair depending on how many minutes it takes to make the recipe.
+**Conclusion**: We reject the Null, there is a difference in accuracy between the two groups and our model isn't exactly fair depending on how many minutes it takes to make the recipe.
 
