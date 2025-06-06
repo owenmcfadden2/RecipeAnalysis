@@ -190,6 +190,7 @@ We continued to use **RandomForestClassifier** since rating isn't continuous. To
 **Model Performance**: we are now going to use **R-squard** to evaluate the performance of our model
 
 Training R-square: 0.723
+
 Test R-squared: 0.731
 
 This is a **tiny improvement** over our baseline model...This is likely because of several factore: 1. **GridSearchCV** really didn't do all that much to optimize our hyperparameters. The default amount of trees is 100 and it found 100 to be the best number and the difference in depth of 7 and 3 is really quite small. Furthermore, it could be because our extra parameters really aren't that correlated with rating and we got lucky picking two good ones for the base model.
