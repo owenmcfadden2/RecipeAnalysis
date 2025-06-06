@@ -178,6 +178,13 @@ We had to **transform** the data as follows:
 * minutes: transformed using QuantileTransformer
 * review_length: transformed using QuantileTransformer
 
+We switched from a **linear regression** model to a **RandomForestClassifier** since rating isn't continuous. To select the best **hyperparameters**, we chose to use **GridSearchCV** to find the optimal max_depth. We searched over the range from 2 to 200, taking steps of 20, and the best depth was **two**. 
+
+**Model Performance**: we are now going to use **accuracy** to evaluate the performance of our model  
+Training Accuracy: 0.7234375  
+Testing Accuracy: 0.722  
+This is a **huge improvement** over our baseline model
+
 ## Fairness Analysis
 AAAA
 
