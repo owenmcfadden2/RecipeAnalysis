@@ -4,7 +4,7 @@ By: Owen McFadden and David Goldstein
 ## Introduction
 For our project, we wanted to dive into how protein content relates to the rating of different recipes. Protein is an absolutely essential part of our daily diet, helping to build and repair our muscles, supports immune function and is a key contributor in the production of enzymes and hormones. Many people don't consume enough protein, especially adults as they get older, and this could be due to the fact that **maybe high-protein recipes simply don't taste as good**. To investigate this, we'll work with two dataframes taken off of the internet.
 
-To begin, here is a brief introduction of the datasets we’re working with, “RAW_recipes.csv” and “interactions.csv”
+To begin, here is a brief introduction of the datasets we’re working with, “RAW_recipes.csv” and “interactions.csv”:  
 * RAW_recipes has 83782 rows each of which represents a recipe, and 12 columns:
   * ‘name’ -  Name of recipe
   * ‘id’ - ID of recipe
@@ -49,7 +49,7 @@ After merging, cleaning and adding columns, our final dataset has 233779 rows an
 | 412 broccoli casserole               | 306168 |        40 |            50969 | 2008-05-30  | ['60-minutes-or-less', ...]          | [194.8, 20.0, 6.0, 32.0, 22.0, 36.0, 3.0] |         6 | ['preheat oven to 350 degrees'...]       | since there are already 411...          | ['frozen broccoli cuts', ...]         |               9 |    768828 |      306168 | 2013-08-02 |        5 | Loved this...                          |                        22 | 0-50%       |  
 
 ### Univariate and Bivariate Analysis
-For our **univariate analysis**, we looked into the distribution of the rating column. Below, you’ll see a bar chart displaying the distribution of ratings, and is skewed heavily left, which indicates that most of the ratings in this dataset are on the higher side (as you can see by hovering, almost 170,000 of our 233,779 reviews gave a rating of 5/5)
+For our **univariate analysis**, we looked into the distribution of the rating column. Below, you’ll see a bar chart displaying the distribution of ratings, and is skewed heavily left, which indicates that most of the ratings in this dataset are on the higher side (as you can see by hovering, almost 170,000 of our 233,779 reviews gave a rating of 5/5).
 <div style="margin-bottom: -175px;">
   <iframe
     src="assets/univariate.html"
@@ -91,7 +91,7 @@ As a reminder, for a column to be NMAR, it means that the chance that the value 
 | review      |              57 |  
 
 ### Missingness Dependency
-For our analysis of missingness, we wanted to see if the missingness of the description column was dependent on other columns, specifically rating and minutes. We did this by performing permutation tests, with a significance level of α = 0.05 and our test statistic was the absolute difference in means: average rating where description **is missing** - average rating where description **is not missing**
+For our analysis of missingness, we wanted to see if the missingness of the description column was dependent on other columns, specifically rating and minutes. We did this by performing permutation tests, with a significance level of α = 0.05 and our test statistic was the absolute difference in means: average rating where description **is missing** - average rating where description **is not missing**.
 
 #### Missingness Test #1 - Minutes
 Does **descriptions** missingness depend on **minutes**? **No** - our permutation test (100 shuffles) yielded a p-value of 0.34, since this is greater than our α, we don't have any evidence to prove that the missingness of description depends on minutes. The plot below is a histogram of our simulated absolute difference in means, and the black line is the observed absolute difference in means (42.275).
@@ -122,14 +122,15 @@ As we originally said, we wanted to investigate whether higher protein content w
 **Null Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated the same as foods without high protein    
 **Alternate Hypothesis**: Foods with high protein (>= 50% protein daily value) are rated lower than foods without high protein  
 **Test Statistic**: Mean rating of foods with high protein (>= 50% protein daily value)  
-**Significance Level**: α = 0.05
-We chose to run a permutation test since it doesn't make any assumptions about the distribution of ratings, and we're simply asking **How unusual is is our observed test statistic if protein has no effect on rating?**.  
+**Significance Level**: α = 0.05  
+We chose to run a permutation test since it doesn't make any assumptions about the distribution of ratings, and we're simply asking **How unusual is is our observed test statistic if protein has no effect on rating?** 
 
 ### Running the permutation test:  
 **Step 1**: Find the observed test statistic: 4.662 (mean rating of foods with high protein)  
 **Step 2**: Randomly shuffle values 1000 times to disconnect any possible association between rating and protein content. For each of these shuffles we computed the mean of high protein recipes (randomly shuffled) and stored it as **simulated data**  
 **Step 3**: Compute our p-value given this distribution of simulated data under the null hypothesis  
 **Step 4**: Make our decision  
+
 Our computed p-value is **0.00** (essentially zero) and since this is less than our significance level **0.05**, we **reject the null hypothesis**, that foods with high protein are rated the same as foods without high protein. As you can see in the histogram below, all of our simulated test statistics are greater than the observed test statistic (black line).  
 
 <div style="margin-bottom: -175px;">
@@ -146,8 +147,8 @@ For our prediction problem, we are forming a **regression** problem to predict t
 
 ## Baseline Model
 For our **baseline model**, we used two features:  
-1. **has_description**: A column we added for this model specifically, indicating whether or not a recipe has a written description
-2. **n_ingredients**: Number of ingredients in the recipe
+1. **has_description** (nominal): A column we added for this model, indicating whether or not a recipe has a written description
+2. **n_ingredients** (quantitative): Number of ingredients in the recipe
 
 We trained a linear regression model using **pipeline**, by **one-hot encoding** has_description and leaving n_ingredients as is.  
 
@@ -158,11 +159,24 @@ Since our **RMSE** is relatively large, our model's predictions are usually off 
 
 Training R-squared: 0.000148  
 Test R-squared: 0.00007  
-Since our **R-squared** is nearly zero, almost none of the variation in the ratings can be explained by our model
-
+Since our **R-squared** is nearly zero, almost none of the variation in the ratings can be explained by our model.
 
 ## Final Model
-AAAA
+For our **final model**, we used five features:
+1. **has_description** (nominal): as described above
+2. **n_ingredients** (quantitative): as described above
+3. **n_steps** (quantitative): Number of steps in the recipe
+4. **minutes** (quantitative): Number of minutes recipe takes to make
+5. **review_length** (quantitative): A new column we added for this model, indicating the length of a review
+
+Our 3 new features in this model were **n_steps**, **minutes**, and **review_length**. We chose these specifically as we think they could relate to the rating of a recipe. For n_steps and minutes, if a recipe takes longer and is more complex, in theory a recipe could be better. For review_length, a long review could be a strong indicator of strong emotions in regards to the recipe, positive or negative.
+
+We had to **transform** the data as follows:
+* has_description: one-hot encoding
+* n_ingredients: standardized using StandardScaler
+* n_steps: standardized using StandardScaler
+* minutes: transformed using QuantileTransformer
+* review_length: transformed using QuantileTransformer
 
 ## Fairness Analysis
 AAAA
