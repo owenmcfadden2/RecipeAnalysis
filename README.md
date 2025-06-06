@@ -106,7 +106,7 @@ Does **descriptions** missingness depend on **minutes**? **No** - our permutatio
 </div>
 
 #### Missingness Test #2 - Rating
-Does **descriptions** missingness depend on **rating**? **Yes** - our permutation test (100 shuffles) yielded a p-value of 0.04, since this is less than our α, it is extremely unlikely that this is due to chance alone. The plot below is a histogram of our simulated absolute difference in means, and the black line is the observed absolute difference in means (0.2307).
+Does **descriptions** missingness depend on **rating**? **Yes** - our permutation test (100 shuffles) yielded a p-value of 0.05, since this is less than our α, it is extremely unlikely that this is due to chance alone. The plot below is a histogram of our simulated absolute difference in means, and the black line is the observed absolute difference in means (0.2307).
 
 <div style="margin-bottom: -175px;">
   <iframe
@@ -143,23 +143,24 @@ Our computed p-value is **0.00** (essentially zero) and since this is less than 
 </div>
 
 ## Framing a Prediction Problem
-For our prediction problem, we are forming a **regression** problem to predict the rating (as a continuous float, not on a discrete 1-5 scale) of a recipe based on characteristics that are known before the review is submitted. Our response variable is **rating**, so that given all of the recipes features (like number of steps, number of ingredients, etc.) we could predict whether the recipe is "good" (rated highly). We're going to use **RMSE and R-squared** to evaluate the accuracy of our model.
+For our prediction problem, we are forming a **classification** problem to predict the rating (on a discrete 1-5 scale) of a recipe based on characteristics that are known before the review is submitted. Our response variable is **rating**, so that given all of the recipes features (like number of steps, number of ingredients, etc.) we could predict whether the recipe is "good" (rated highly). We're going to use **RMSE** to evaluate the effectivness of our model along with **R-squared**.
 
 ## Baseline Model
 For our **baseline model**, we used two features:  
 1. **has_description** (nominal): A column we added for this model, indicating whether or not a recipe has a written description
 2. **n_ingredients** (quantitative): Number of ingredients in the recipe
 
-We trained a linear regression model using **pipeline**, by **one-hot encoding** has_description and leaving n_ingredients as is.  
+Importantly for both our base and our final model, we sampled from our overall dataframe so our models wouldn't take forever to run. We sampled a random 50,000 recipes and based our model on those. Otherwise, the code would take too long to run.
+
+We trained a random forest classification model using **pipeline** and default variables, by **one-hot encoding** has_description and leaving n_ingredients as is.  
 
 **Model Performance**: 
-Training RMSE: 1.334  
-Test RMSE: 1.346 
-Since our **RMSE** is relatively large, our model's predictions are usually off by quite a lot.  
-
-Training R-squared: 0.000148  
-Test R-squared: 0.00007  
-Since our **R-squared** is nearly zero, almost none of the variation in the ratings can be explained by our model.
+Training RMSE: 1.471  
+Test RMSE: 1.485 
+Since our **RMSE** is fairly similar, it's clear we're not overfitting our data.  
+Training R-squared: 0.723
+Test R-squared: 0.725
+Since our **R-squard** is fairly high, it seems we're not doing that bad of a job predicting data
 
 ## Final Model
 For our **final model**, we used five features:
@@ -178,14 +179,22 @@ We had to **transform** the data as follows:
 * minutes: transformed using QuantileTransformer
 * review_length: transformed using QuantileTransformer
 
-We switched from a **linear regression** model to a **RandomForestClassifier** since rating isn't continuous. To select the best **hyperparameters**, we chose to use **GridSearchCV** to find the optimal max_depth. We searched over the range from 2 to 200, taking steps of 20, and the best depth was **two**. 
+We continued to use **RandomForestClassifier** since rating isn't continuous. To select the best **hyperparameters**, we chose to use **GridSearchCV** to find the optimal max_depth and optimal number of trees. We searched over the range from 1 to 10, taking steps of 1, and the best depth was **7**. **GridSearchCV** also determined that the best number of trees to use is **100** out of a list of 100, 150, and 200.
 
-**Model Performance**: we are now going to use **accuracy** to evaluate the performance of our model  
-Training Accuracy: 0.7234375  
-Testing Accuracy: 0.722  
-This is a **huge improvement** over our baseline model
+**Model Performance**: we are now going to use **R-squard** to evaluate the performance of our model  
+Training R-square: 0.723
+Test R-squared: 0.731
+This is a **tiny improvement** over our baseline model...This is likely because of several factore: 1. **GridSearchCV** really didn't do all that much to optimize our hyperparameters. The default amount of trees is 100 and it found 100 to be the best number and the difference in depth of 7 and 3 is really quite small. Furthermore, it could be because our extra parameters really aren't that correlated with rating and we got lucky picking two good ones for the base model.
 
 ## Fairness Analysis
-AAAA
-
+* Group X: called group_a, this is the group of recipes that take at least 45 minutes
+* Group Y: called group_b, this is the group of recipes that take less than 45 minutes
+* evaluation metric: we dicided to use accuracy_score to see how good our model is at predicting rating
+* null hypothesis: when the model is broken up into groups X and Y seperately, the difference in accuracy is not unusual.
+* alternative hypothesis: there's an unusual difference in accuracy between the two groups X and Y
+* test statistic: absolute difference in accuracy
+* significance level: α = 0.05
+* p: 0.0
+  
+Conclusion: We reject the Null, there is a difference in accuracy between the two groups and our model isn't exactly fair depending on how many minutes it takes to make the recipe.
 
